@@ -2515,6 +2515,7 @@ static SettingsContainer &GetSettingsTree()
 			limitations->Add(new SettingEntry("construction.chunnel"));
 			limitations->Add(new SettingEntry("station.never_expire_airports"));
 			limitations->Add(new SettingEntry("vehicle.never_expire_vehicles"));
+			limitations->Add(new SettingEntry("vehicle.vehicle_intro_randomisation"));
 			limitations->Add(new SettingEntry("vehicle.no_expire_vehicles_after"));
 			limitations->Add(new SettingEntry("vehicle.no_introduce_vehicles_after"));
 			limitations->Add(new SettingEntry("vehicle.max_trains"));
