@@ -1166,6 +1166,7 @@ SettingsContainer &GetSettingsTree()
 				time->Add(new SettingEntry("gui.fast_forward_speed_limit"));
 				time->Add(new SettingEntry("economy.day_length_factor"));
 				time->Add(new SettingEntry("vehicle.vehicle_intro_randomisation"));
+				time->Add(new SettingEntry("vehicle.offer_vehicle_preview"));
 			}
 
 			SettingsPage *authorities = environment->Add(new SettingsPage(STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES));
