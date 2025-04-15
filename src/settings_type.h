@@ -712,6 +712,7 @@ struct VehicleSettings {
 	uint8_t  freight_trains;                   ///< value to multiply the weight of cargo by
 	bool     dynamic_engines;                  ///< enable dynamic allocation of engine data
 	bool     never_expire_vehicles;            ///< never expire vehicles
+	bool     offer_vehicle_preview;            ///< offer vehicle preview to companies
 	bool     vehicle_intro_randomisation;      ///< randomise the introduction dates of vehicles
 	CalTime::Year no_expire_vehicles_after;    ///< do not expire vehicles after this year
 	CalTime::Year no_introduce_vehicles_after; ///< do not introduce vehicles after this year

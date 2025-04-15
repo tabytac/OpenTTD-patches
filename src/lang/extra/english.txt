@@ -244,6 +244,9 @@ STR_CONFIG_SETTING_WARN_NO_DEPOT_ORDER                          :Warn if a vehic
 STR_CONFIG_SETTING_WARN_NO_DEPOT_ORDER_HELPTEXT                 :When enabled and when reviewing vehicle orders is also enabled, a news message gets sent when a train, road vehicle or ship does not have a depot order in its schedule
 STR_CONFIG_SETTING_WARN_NO_DEPOT_ORDER_IF_BREAKDOWNS_ON         :If vehicle breakdowns enabled
 
+STR_CONFIG_SETTING_OFFER_VEHICLE_PREVIEW                        :Show vehicle previews: {STRING2}
+STR_CONFIG_SETTING_OFFER_VEHICLE_PREVIEW_HELPTEXT               :When enabled, the top performing company is sometimes offered a 1 year exclusive preview of a vehicle
+
 STR_CONFIG_SETTING_VEHICLE_INTRO_RANDOMISATION                  :Randomise vehicle introduction dates: {STRING2}
 STR_CONFIG_SETTING_VEHICLE_INTRO_RANDOMISATION_HELPTEXT         :When enabled, randomises vehicle introduction dates by up to 511 extra days from their original date
 

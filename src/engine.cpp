@@ -1049,6 +1049,7 @@ void EnginesDailyLoop()
 		c->avail_roadtypes = AddDateIntroducedRoadTypes(c->avail_roadtypes, CalTime::CurDate());
 	}
 
+	if (!_settings_game.vehicle.offer_vehicle_preview) return;
 	if (CalTime::CurYear() >= _year_engine_aging_stops) return;
 
 	for (Engine *e : Engine::Iterate()) {
@@ -1250,7 +1251,7 @@ void EnginesMonthlyLoop()
 
 			if (e->intro_date > no_introduce_after) continue;
 
-			if (!(e->flags & ENGINE_AVAILABLE) && CalTime::CurDate() >= (e->intro_date + DAYS_IN_YEAR)) {
+			if (!(e->flags & ENGINE_AVAILABLE) && CalTime::CurDate() >= (e->intro_date + (_settings_game.vehicle.offer_vehicle_preview ? DAYS_IN_YEAR : 0))) {
 				/* Introduce it to all companies */
 				NewVehicleAvailable(e);
 			} else if (!(e->flags & (ENGINE_AVAILABLE | ENGINE_EXCLUSIVE_PREVIEW)) && CalTime::CurDate() >= e->intro_date) {
