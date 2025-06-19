@@ -2694,6 +2694,7 @@ static SettingsContainer &GetSettingsTree()
 				cdist->Add(new SettingEntry("linkgraph.demand_distance"));
 				cdist->Add(new SettingEntry("linkgraph.demand_size"));
 				cdist->Add(new SettingEntry("linkgraph.short_path_saturation"));
+				cdist->Add(new SettingEntry("linkgraph.cargo_route_soonest_percent"));
 				cdist->Add(new SettingEntry("linkgraph.aircraft_link_scale"));
 			}
 

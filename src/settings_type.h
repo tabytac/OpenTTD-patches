@@ -828,6 +828,7 @@ struct LinkGraphSettings {
 	uint8_t demand_size;                                ///< influence of supply ("station size") on the demand function
 	uint8_t demand_distance;                            ///< influence of distance between stations on the demand function
 	uint8_t short_path_saturation;                      ///< percentage up to which short paths are saturated before saturating most capacious paths
+	uint8_t cargo_route_soonest_percent;                ///< percentage of cargo choosing soonest arrival route
 	uint16_t aircraft_link_scale;                       ///< scale effective distance of aircraft links
 
 	inline DistributionType GetDistributionType(CargoType cargo) const

@@ -26,6 +26,7 @@ enum DistributionType : uint8_t {
 
 	DT_ASYMMETRIC_EQ = 20,   ///< Asymmetric distribution (equal). Usually cargo will only travel in one direction. Attempt to distribute the same amount of cargo to each sink.
 	DT_ASYMMETRIC_NEAR = 21, ///< Asymmetric distribution (nearest). Usually cargo will only travel in one direction. Attempt to distribute cargo to the nearest sink.
+	DT_ASYMMETRIC_DURATION = 22, ///< Asymmetric distribution (duration). Usually cargo will only travel in one direction. Attempt to distribute cargo to the sink with the shortest duration.
 
 	DT_PER_CARGO_DEFAULT = 128, ///< Per cargo: Use default value
 };

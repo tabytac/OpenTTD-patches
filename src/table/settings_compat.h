@@ -170,6 +170,7 @@ static std::initializer_list<SettingsCompat> _settings_compat{
 	SLCX_VAR("linkgraph.demand_distance"),
 	SLCX_VAR("linkgraph.demand_size"),
 	SLCX_VAR("linkgraph.short_path_saturation"),
+	SLCX_VAR("linkgraph.cargo_route_soonest_percent"),
 	SLCX_VAR("linkgraph.aircraft_link_scale"),
 	SLCX_XREF("economy.old_town_cargo_factor", SL_MIN_VERSION, SL_MAX_VERSION, SlXvFeatureTest(XSLFTO_AND, XSLFI_JOKERPP)),
 	SLCX_VAR("vehicle.train_acceleration_model"),

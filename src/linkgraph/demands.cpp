@@ -486,6 +486,9 @@ DemandCalculator::DemandCalculator(LinkGraphJob &job) :
 			case DT_ASYMMETRIC_NEAR:
 				this->CalcMinimisedDistanceDemand<AsymmetricScaler>(job, reachable_nodes, AsymmetricScaler());
 				break;
+			case DT_ASYMMETRIC_DURATION:
+				/* TODO: Implement asymmetric duration distribution. */
+				break;
 			default:
 				/* Nothing to do. */
 				break;

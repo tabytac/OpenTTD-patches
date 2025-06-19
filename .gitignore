@@ -7,3 +7,4 @@ docs/source/*
 /out
 /vcpkg_installed
 *.tmp
+ZZ-Design-Document.md
