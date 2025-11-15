@@ -601,6 +601,22 @@ static void FormatStateTicksHHMMString(StringBuilder builder, StateTicks ticks, 
 	FormatString(builder, GetStringPtr(STR_FORMAT_DATE_MINUTES), tmp_params, case_index);
 }
 
+static void FormatStateTicksHHMMSSString(StringBuilder builder, StateTicks ticks, uint case_index)
+{
+	TickMinutes minutes = _settings_time.ToTickMinutes(ticks);
+	const int64_t ticks_value = ticks.base();
+	const int64_t ratio = TimetableDisplayUnitSize();
+	const int64_t remaining_ticks = ticks_value % ratio;
+	/* same logic as leftover ticks to convert to seconds */
+	uint seconds = (remaining_ticks * 60) / _settings_time.ticks_per_minute;
+	char hour[3], minute[3], second[3];
+	format_to_fixed_z::format_to(hour,   lastof(hour),   "{:02}", minutes.ClockHour());
+	format_to_fixed_z::format_to(minute, lastof(minute), "{:02}", minutes.ClockMinute());
+	format_to_fixed_z::format_to(second, lastof(second), "{:02}", seconds);
+	auto tmp_params = MakeParameters(hour, minute, second);
+	FormatString(builder, GetStringPtr(STR_FORMAT_DATE_MINUTES_SECONDS), tmp_params, case_index);
+}
+
 static void FormatTimeHHMMString(StringBuilder builder, uint time, uint case_index)
 {
 	char hour[9], minute[3];
@@ -1810,8 +1826,30 @@ static void FormatString(StringBuilder builder, std::string_view str_arg, String
 				case SCC_TT_TIME:       // {TT_TIME}
 				case SCC_TT_TIME_ABS: { // {TT_TIME_ABS}
 					if (_settings_time.time_in_minutes) {
-						FormatStateTicksHHMMString(builder, args.GetNextParameter<StateTicks>(), next_substr_case_index);
+						if (b == SCC_TT_TIME_ABS && _settings_client.gui.departure_show_seconds) {
+							FormatStateTicksHHMMSSString(builder, args.GetNextParameter<StateTicks>(), next_substr_case_index);
+						} else {
+							FormatStateTicksHHMMString(builder, args.GetNextParameter<StateTicks>(), next_substr_case_index);
+						}
 					} else if (EconTime::UsingWallclockUnits() && b == SCC_TT_TIME) {
+						StateTicks tick = args.GetNextParameter<StateTicks>();
+						StateTicksDelta offset = tick - _state_ticks;
+						auto tmp_params = MakeParameters(offset / TICKS_PER_SECOND);
+						FormatString(builder, GetStringPtr(STR_UNITS_SECONDS_SHORT), tmp_params);
+					} else {
+						FormatTinyOrISODate(builder, StateTicksToCalendarDate(args.GetNextParameter<StateTicks>()), STR_FORMAT_DATE_TINY);
+					}
+					break;
+				}
+
+				case SCC_TT_TIME_TIMETABLE: { // {TT_TIME_TIMETABLE}
+					if (_settings_time.time_in_minutes) {
+						if (_settings_client.gui.timetable_arrival_departure == TADF_ON_WITH_SECONDS) {
+							FormatStateTicksHHMMSSString(builder, args.GetNextParameter<StateTicks>(), next_substr_case_index);
+						} else {
+							FormatStateTicksHHMMString(builder, args.GetNextParameter<StateTicks>(), next_substr_case_index);
+						}
+					} else if (EconTime::UsingWallclockUnits()) {
 						StateTicks tick = args.GetNextParameter<StateTicks>();
 						StateTicksDelta offset = tick - _state_ticks;
 						auto tmp_params = MakeParameters(offset / TICKS_PER_SECOND);

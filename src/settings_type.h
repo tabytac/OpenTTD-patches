@@ -185,6 +185,12 @@ enum TimetableLeftoverTimeSetting : uint8_t {
 	TLT_SECONDS = 2,     ///< Show leftover time as seconds.
 };
 
+/** Settings for timetable arrival/departure display format. */
+enum TimetableArrivalDepartureFormat : uint8_t {
+	TADF_OFF = 0,                ///< Do not show arrival/departure times.
+	TADF_ON = 1,                 ///< Show arrival/departure times.
+	TADF_ON_WITH_SECONDS = 2,    ///< Show arrival/departure times with seconds.
+};
 
 /** Deaptures conditional jump result */
 enum DeparturesConditionalJumpResult : uint8_t {
@@ -301,7 +307,7 @@ struct GUISettings : public TimeSettings {
 	bool        show_bridges_on_map;                             ///< bridges are rendered on a viewport in map mode
 	bool        show_tunnels_on_map;                             ///< tunnels are rendered on a viewport in map mode
 	bool        use_owner_colour_for_tunnelbridge;               ///< bridges and tunnels are rendered with their owner's colour
-	bool        timetable_arrival_departure;                     ///< show arrivals and departures in vehicle timetables
+	TimetableArrivalDepartureFormat     timetable_arrival_departure;                     ///< show arrivals and departures in vehicle timetables with/without seconds
 	uint8_t     max_departures;                                  ///< maximum number of departures to show per station
 	uint16_t    max_departure_time;                              ///< maximum time in advance to show departures (days)
 	uint16_t    max_departure_time_minutes;                      ///< maximum time in advance to show departures (minutes)
@@ -316,6 +322,7 @@ struct GUISettings : public TimeSettings {
 	bool        departure_smart_terminus;                        ///< whether to only show passenger services
 	DeparturesConditionalJumpResult departure_conditionals;      ///< how to handle conditional orders
 	bool        departure_merge_identical;                       ///< whether to merge identical departures
+	bool        departure_show_seconds;                          ///< whether to show seconds in departure board times
 	uint8_t     departure_default_mode;                          ///< default mode for non-waypoint departure board window
 	uint8_t     departure_default_source;                        ///< default source for departure board window
 	bool        departure_default_via;                           ///< default via type for station departure board window

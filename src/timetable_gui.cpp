@@ -467,7 +467,7 @@ struct TimetableWindow : GeneralVehicleWindow {
 					AppendStringInPlace(buf, str, param);
 					return GetStringBoundingBox(buf).width;
 				};
-				this->deparr_time_width = get_width(STR_JUST_TT_TIME);
+				this->deparr_time_width = get_width((_settings_client.gui.timetable_arrival_departure == TADF_ON_WITH_SECONDS) ? STR_JUST_TT_TIME_TIMETABLE : STR_JUST_TT_TIME);
 				this->deparr_abbr_width = std::max(get_width(STR_TIMETABLE_ARRIVAL_ABBREVIATION), get_width(STR_TIMETABLE_DEPARTURE_ABBREVIATION));
 				size.width = this->deparr_abbr_width + this->deparr_time_width + padding.width;
 				[[fallthrough]];
@@ -855,10 +855,10 @@ struct TimetableWindow : GeneralVehicleWindow {
 						if (arr_dep[i / 2].arrival != INVALID_TICKS) {
 							DrawString(abbr.left, abbr.right, tr.top, arrival_abbr, i == selected ? TC_WHITE : TC_BLACK);
 							if (this->show_expected && i / 2 == earlyID) {
-								draw_time(TC_GREEN, STR_JUST_TT_TIME, _state_ticks + arr_dep[i / 2].arrival);
+								draw_time(TC_GREEN, STR_JUST_TT_TIME_TIMETABLE, _state_ticks + arr_dep[i / 2].arrival);
 							} else {
 								draw_time(HasBit(arr_dep[i / 2].flags, TADF_ARRIVAL_PREDICTED) ? (TextColour)(TC_IS_PALETTE_COLOUR | TC_NO_SHADE | 4) : (show_late ? TC_RED : i == selected ? TC_WHITE : TC_BLACK),
-										STR_JUST_TT_TIME,
+										STR_JUST_TT_TIME_TIMETABLE,
 										_state_ticks + arr_dep[i / 2].arrival + (HasBit(arr_dep[i / 2].flags, TADF_ARRIVAL_NO_OFFSET) ? 0 : offset));
 							}
 						}
@@ -866,7 +866,7 @@ struct TimetableWindow : GeneralVehicleWindow {
 						if (arr_dep[i / 2].departure != INVALID_TICKS) {
 							DrawString(abbr.left, abbr.right, tr.top, departure_abbr, i == selected ? TC_WHITE : TC_BLACK);
 							draw_time(HasBit(arr_dep[i / 2].flags, TADF_DEPARTURE_PREDICTED) ? (TextColour)(TC_IS_PALETTE_COLOUR | TC_NO_SHADE | 4) : (show_late ? TC_RED : i == selected ? TC_WHITE : TC_BLACK),
-									STR_JUST_TT_TIME,
+									STR_JUST_TT_TIME_TIMETABLE,
 									_state_ticks + arr_dep[i/2].departure + (HasBit(arr_dep[i / 2].flags, TADF_DEPARTURE_NO_OFFSET) ? 0 : offset));
 						}
 					}
@@ -1254,8 +1254,8 @@ struct TimetableWindow : GeneralVehicleWindow {
 	 */
 	void UpdateSelectionStates()
 	{
-		this->GetWidget<NWidgetStacked>(WID_VT_ARRIVAL_DEPARTURE_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure ? 0 : SZSP_NONE);
-		this->GetWidget<NWidgetStacked>(WID_VT_EXPECTED_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure ? 0 : 1);
+		this->GetWidget<NWidgetStacked>(WID_VT_ARRIVAL_DEPARTURE_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure != TADF_OFF ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(WID_VT_EXPECTED_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure != TADF_OFF ? 0 : 1);
 		this->GetWidget<NWidgetStacked>(WID_VT_SEL_SHARED)->SetDisplayedPlane(this->vehicle->owner == _local_company && _ctrl_pressed ? 1 : 0);
 	}
 

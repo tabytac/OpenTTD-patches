@@ -107,6 +107,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"TT_TICKS_LONG",     EmitSingleChar, SCC_TT_TICKS_LONG,      1, std::nullopt, {}},
 	{"TT_TIME",           EmitSingleChar, SCC_TT_TIME,            1, std::nullopt, {}},
 	{"TT_TIME_ABS",       EmitSingleChar, SCC_TT_TIME_ABS,        1, std::nullopt, {}},
+	{"TT_TIME_TIMETABLE", EmitSingleChar, SCC_TT_TIME_TIMETABLE,  1, std::nullopt, {}},
 
 	{"STRING",            EmitSingleChar, SCC_STRING,             1, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}},
 	{"RAW_STRING",        EmitSingleChar, SCC_RAW_STRING_POINTER, 1, std::nullopt, {CmdFlag::Gender}},

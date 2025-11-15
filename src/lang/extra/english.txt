@@ -12,6 +12,7 @@ STR_JUST_TT_TICKS                                               :{TT_TICKS}
 STR_JUST_TT_TICKS_LONG                                          :{TT_TICKS_LONG}
 STR_JUST_TT_TIME                                                :{TT_TIME}
 STR_JUST_TT_TIME_ABS                                            :{TT_TIME_ABS}
+STR_JUST_TT_TIME_TIMETABLE                                      :{TT_TIME_TIMETABLE}
 
 STR_RED_INT                                                     :{RED}{NUM}
 
@@ -521,6 +522,8 @@ STR_CONFIG_SETTING_TIMETABLE_LEFTOVER_TIME                      :Show leftover t
 STR_CONFIG_SETTING_TIMETABLE_LEFTOVER_TIME_HELPTEXT             :When converting from ticks to days/minutes in timetables, also show any leftover ticks or seconds
 STR_CONFIG_SETTING_TIMETABLE_LEFTOVER_TIME_TICKS                :Ticks
 STR_CONFIG_SETTING_TIMETABLE_LEFTOVER_TIME_SECONDS              :Seconds
+
+STR_CONFIG_SETTING_TIMETABLE_ARRIVAL_DEPARTURE_FORMAT_ON_WITH_SECONDS :On with seconds
 
 STR_CONFIG_SETTING_OVERRIDE_TIME_SETTINGS                       :Use client timetable time settings instead of savegame time settings: {STRING2}
 STR_CONFIG_SETTING_OVERRIDE_TIME_SETTINGS_HELPTEXT              :Select whether to use local client settings for timetable time display, instead of the time settings in the savegame.
@@ -1527,6 +1530,8 @@ STR_CONFIG_DEPARTURE_CONDITIONALS_2                             :assuming they w
 STR_CONFIG_DEPARTURE_CONDITIONALS_3                             :assuming they will not be taken
 STR_CONFIG_DEPARTURE_MERGE_IDENTICAL                            :Merge identical entries: {STRING2}
 STR_CONFIG_DEPARTURE_MERGE_IDENTICAL_HELPTEXT                   :Whether identical departure board entries should be merged into a single one
+STR_CONFIG_SETTING_DEPARTURE_SHOW_SECONDS                       :Show seconds in departure times: {STRING2}
+STR_CONFIG_SETTING_DEPARTURE_SHOW_SECONDS_HELPTEXT              :Whether to show seconds (HH:MM:SS format) instead of minutes (HH:MM) in departure board times
 
 STR_WAYPOINT_VIEW_HIDE_VIEWPORT_LABEL                           :{BLACK}Hide the name label for this waypoint
 
@@ -2090,6 +2095,7 @@ STR_TRADITIONAL_SHIP_NAME                                       :Ship {COMMA}
 STR_TRADITIONAL_AIRCRAFT_NAME                                   :Aircraft {COMMA}
 
 STR_FORMAT_DATE_MINUTES                                         :{0:RAW_STRING}:{1:RAW_STRING}
+STR_FORMAT_DATE_MINUTES_SECONDS                                 :{0:RAW_STRING}:{1:RAW_STRING}:{2:RAW_STRING}
 
 STR_HHMM_WITH_DATE_Y                                            :{TIME_HHMM} / {NUM}
 STR_HHMM_WITH_DATE_YM                                           :{TIME_HHMM} / {DATE_SHORT}

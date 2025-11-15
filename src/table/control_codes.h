@@ -94,6 +94,7 @@ enum StringControlCode : uint16_t {
 	SCC_TT_TICKS_LONG,
 	SCC_TT_TIME,
 	SCC_TT_TIME_ABS,
+	SCC_TT_TIME_TIMETABLE,
 
 	/* Must be consecutive */
 	SCC_STRING1,
